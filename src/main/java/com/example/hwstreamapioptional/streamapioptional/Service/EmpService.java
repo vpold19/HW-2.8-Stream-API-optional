@@ -3,11 +3,15 @@ package com.example.hwstreamapioptional.streamapioptional.Service;
 import com.example.hwstreamapioptional.streamapioptional.Model.Employee;
 
 import java.util.Collection;
+import java.util.Map;
 
 public interface EmpService {
-    Employee add(String name, String surname);
-    Employee remove(String name, String surname);
-    Employee find(String name, String surname);
+    Employee add(String name, String surname, int department, double salary);
+
+
+    Employee remove(String name, String surname, int department, double salary);
+
+    Employee find(String name, String surname, int department, double salary);
 
     Collection<Employee> findAll();
 }
