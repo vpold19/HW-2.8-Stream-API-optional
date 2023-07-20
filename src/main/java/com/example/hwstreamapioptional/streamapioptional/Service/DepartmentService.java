@@ -17,16 +17,18 @@ public class DepartmentService {
         this.empServiceImp = empServiceImp;
     }
 
-    public Employee getEmployeeWithMaxSalary(int department) {
+    public Double getMaxSalary(int department) {
         return empServiceImp.findAll().stream()
                 .filter(employee -> employee.getDepartment() == department)
                 .max(Comparator.comparingDouble(Employee::getSalary))
+                .map(employee -> employee.getSalary())
                 .orElseThrow(EmployeeNotFoundException::new);
     }
-    public Employee getEmployeeWithMinSalary(int department) {
+    public Double getMinSalary(int department) {
         return empServiceImp.findAll().stream()
                 .filter(employee -> employee.getDepartment() == department)
                 .min(Comparator.comparingDouble(Employee::getSalary))
+                .map(employee -> employee.getSalary())
                 .orElseThrow(EmployeeNotFoundException::new);
     }
     public List<Employee> getAll(int department){
@@ -37,5 +39,11 @@ public class DepartmentService {
     public Map<Integer,List<Employee>> getAll(){
        return empServiceImp.findAll().stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment));
+    }
+    public Double getSumSalary(int department){
+        return empServiceImp.findAll().stream()
+                .filter(employee -> employee.getDepartment()==department)
+                .mapToDouble(Employee::getSalary)
+                .sum();
     }
 }

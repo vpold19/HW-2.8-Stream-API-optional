@@ -9,19 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 @Service
 public class EmpServiceImp implements EmpService{
-    private static final int Size_Limit = 5;
+    private static final int Size_Limit = 6;
     private Map<String,Employee> employees = new HashMap<>(Size_Limit);
 
-    public EmpServiceImp() {
-        Employee employee1 = new Employee("Vadim", "Poldlin", 2000000,1);
-        Employee employee2 = new Employee("Kevin", "Castro", 100000,1);
-        Employee employee3 = new Employee("Osky", "Castro", 200000,2);
-        Employee employee4 = new Employee("Diego", "Roman", 50000,2);
-        employees.put(createKey(employee1),employee1);
-        employees.put(createKey(employee2),employee2);
-        employees.put(createKey(employee3),employee3);
-        employees.put(createKey(employee4),employee4);
-    }
 
     @Override
     public Employee add(String name, String surname, int department, double salary) {
@@ -43,7 +33,7 @@ public class EmpServiceImp implements EmpService{
         if (employees.containsKey(employee.getFullName())) {
             return employees.remove(employee.getFullName());
         }
-        throw new EmployeeNotFoundException();
+        throw new  EmployeeNotFoundException();
     }
 
     @Override
