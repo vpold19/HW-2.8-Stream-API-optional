@@ -5,12 +5,32 @@ import java.util.Objects;
 public class Employee {
     private String name;
     private String surname;
+    private double salary;
+    private int department;
 
-    public Employee(String name, String surname) {
+    public Employee(String name, String surname, double salary, int department) {
         this.name = name;
         this.surname = surname;
-
+        this.salary = salary;
+        this.department = department;
     }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public int getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(int department) {
+        this.department = department;
+    }
+
     public String getFullName(){
         return name + " " + surname;
     }
