@@ -25,6 +25,18 @@ public class EmpServiceImp implements EmpService{
         employees.put(employee.getFullName(),employee);
         return employee;
     }
+    @Override
+    public Employee add(Employee employee){
+        if (employees.size()>=10){
+            throw new EmployeeStorageIsFullException("Нельзя добавить работника, привышен придел ");
+        }
+        Employee worker = new Employee(employee.getName(),employee.getSurname(),employee.getSalary(),employee.getDepartment());
+        if (employees.containsKey(employee.getFullName())){
+            throw new EmployeeAlreadyAddedException("Такой сотрудник уже существует");
+        }
+        employees.put(employee.getFullName(),worker);
+        return worker;
+    }
 
 
     @Override

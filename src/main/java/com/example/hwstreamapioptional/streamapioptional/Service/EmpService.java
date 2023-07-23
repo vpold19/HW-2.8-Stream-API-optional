@@ -9,6 +9,8 @@ public interface EmpService {
     Employee add(String name, String surname, int department, double salary);
 
 
+    Employee add(Employee employee);
+
     Employee remove(String name, String surname, int department, double salary);
 
     Employee find(String name, String surname, int department, double salary);
