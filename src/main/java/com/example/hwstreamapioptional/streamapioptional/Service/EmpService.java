@@ -13,7 +13,11 @@ public interface EmpService {
 
     Employee remove(String name, String surname, int department, double salary);
 
+    Employee remove(Employee employee);
+
     Employee find(String name, String surname, int department, double salary);
+
+    Employee find(Employee employee);
 
     Collection<Employee> findAll();
 }
